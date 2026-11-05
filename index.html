@@ -2,78 +2,167 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>404 – STATION MUSS WEG – FREEBOOTE löscht</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>404 // LFREEBOTE NOT FOUND</title>
+
 <style>
-  body{background:#050505;color:#ffbb66;font-family:Consolas,monospace;padding:20px;min-height:100vh;display:flex;align-items:center;justify-content:center}
-  .box{max-width:700px;background:rgba(20,12,0,0.8);border:1px solid #ffbb66;border-radius:20px;padding:24px;box-shadow:0 0 60px rgba(255,150,0,0.3)}
-  h1{font-weight:300;letter-spacing:3px;background:linear-gradient(135deg,#ffb35a,#ffe3a8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-  .err{background:rgba(255,0,0,0.1);border:1px solid #ff4444;border-radius:10px;padding:10px;margin:12px 0;color:#ff8888}
-  button{background:rgba(255,180,80,0.15);border:1px solid #ffb35a;color:#ffb35a;padding:8px 18px;border-radius:8px;cursor:pointer;margin:4px;font-family:inherit}
-  button:hover{background:rgba(255,180,80,0.3);transform:translateY(-2px)}
-  pre{background:#000;padding:10px;border-radius:8px;font-size:11px;color:#8a9aaa;overflow:auto}
+:root{
+    --bg:#0a0a0f;
+    --panel:#111116;
+    --border:#333344;
+    --text:#e6e6ff;
+    --dim:#7a7a96;
+    --red:#ff0055;
+    --green:#00ffaa;
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:Consolas,Monaco,monospace;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.box{
+    width:100%;
+    max-width:680px;
+    background:var(--panel);
+    border:1px solid var(--border);
+    padding:40px;
+    text-align:center;
+    box-shadow:0 0 30px rgba(255,0,85,.15);
+}
+
+h1{
+    font-size:90px;
+    color:var(--red);
+    letter-spacing:10px;
+    line-height:1;
+    margin-bottom:10px;
+}
+
+h2{
+    font-size:20px;
+    letter-spacing:4px;
+    font-weight:400;
+    margin-bottom:30px;
+}
+
+.msg{
+    color:var(--dim);
+    line-height:1.8;
+    margin-bottom:25px;
+}
+
+.path{
+    margin:20px 0;
+    padding:12px;
+    border:1px solid var(--border);
+    background:#0d0d12;
+    color:var(--green);
+    word-break:break-all;
+}
+
+.buttons{
+    display:flex;
+    gap:12px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-top:25px;
+}
+
+.btn{
+    border:1px solid var(--green);
+    color:var(--green);
+    text-decoration:none;
+    padding:12px 22px;
+    transition:.2s;
+}
+
+.btn:hover{
+    background:var(--green);
+    color:#000;
+}
+
+.code{
+    margin-top:35px;
+    color:#505060;
+    font-size:11px;
+    line-height:1.7;
+}
+
+.blink{
+    animation:blink 1s infinite;
+}
+
+@keyframes blink{
+    50%{opacity:.3;}
+}
 </style>
 </head>
 <body>
+
 <div class="box">
-  <h1>404 – STATION MUSS WEG</h1>
-  <div class="err" id="errBox">Suche Fehler...</div>
-  <div id="log"></div>
-  <pre id="steps"></pre>
-  <div style="margin-top:16px">
-    <button onclick="loeschen()">🔥 FEHLER LÖSCHEN – 404.html</button>
-    <button onclick="location.href='/freeboote/'">→ HAUPT 42 – immer nur vorn</button>
-    <button onclick="location.href='/freeboote/?stellung=mitte15'">→ MITTE 15 – Kristall neu</button>
-  </div>
-  <div style="margin-top:12px;font-size:10px;color:#5a4a3a">
-    freeboote Prinzip: Autonomer RAM-Lauf ohne Schreiben. 64 unten + 64 oben = 128. Nicht alles Machbare ist immer machbar. Darum nur 128.
-  </div>
+
+    <h1>404</h1>
+
+    <h2>LFREEBOTE // NOT FOUND</h2>
+
+    <div class="msg">
+        SCSI // RAID // ORT tmpOMG<br>
+        Die angeforderte Stelle ist nicht im 81→729 Grid.<br>
+        MARKIERT, aber kein ALLOC.
+    </div>
+
+    <div class="path" id="path">
+        SCANNING...
+    </div>
+
+    <div class="buttons">
+        <a class="btn" href="/">ROOT</a>
+        <a class="btn" href="#" id="backBtn">CALL BACK COME</a>
+    </div>
+
+    <div class="code">
+        BIOS=0 | ORDNUNG.tmp.ready | RAM=729 | ARBEIT=WAN<br>
+        lfreebote / allcall recall os<br>
+        NODE=<span class="blink">UNKNOWN</span>
+    </div>
+
 </div>
 
 <script>
-const path = location.pathname;
-document.getElementById('errBox').textContent = `404: ${path} – STATION MUSS WEG – nicht gefunden`;
 
-let log = [];
-function add(s){ log.push(s); document.getElementById('log').innerHTML = log.map(x=>`<div>> ${x}</div>`).join(''); }
+document.getElementById("path").textContent =
+"REQUESTED NODE: " + window.location.pathname;
 
-add(`Fehler provoziert: ${path}`);
-add(`Suche in PQ/RAM/ROM/RUN... nicht gefunden`);
-add(`Prüfe bewegung.ready, hdf.ready, ram81.ready... fehlt`);
-add(`Station muss weg = Fehler aktiv`);
+document.getElementById("backBtn").addEventListener("click",function(e){
 
-function loeschen(){
-  add(`--- 404.html löscht besonders gut ---`);
-  // 1. RAM löschen
-  if(window.localStorage) localStorage.clear();
-  if(window.sessionStorage) sessionStorage.clear();
-  add(`RAM gelöscht – 64 unten frei`);
-  // 2. ROM Spiegel löschen
-  add(`ROM Spiegel gelöscht – 64 oben frei`);
-  // 3. CACHE Regel: X darf nicht auf X
-  add(`CACHE geleert – X darf nicht auf X eingehalten`);
-  // 4. Auf Haupt 42 zurück – diagonale D-O-W
-  add(`Stellung auf HAUPT 42 gesetzt – diagonale D-O-W`);
-  // 5. Spirale 128 neu
-  add(`Spirale 128 außenrum neu gestartet`);
-  // 6. Mitte 15 Kristall neu = schwarzes Loch neu zentriert
-  add(`Mitte 15 Kristall neu – schwarzes Loch zentriert`);
-  // 7. Immer nur vorn
-  document.getElementById('steps').textContent = 
-`Gelöscht:
-- Pfad ${path} verworfen
-- RAM 64 unten frei
-- ROM 64 oben frei
-- CACHE 0/81 CLOSED
-- Stellung HAUPT 42 aktiv
-- Auftrieb: Habt ihr genug vom Fallen? Ich habe Auftrieb.
-- Weiter: immer nur vorn`;
+    e.preventDefault();
 
-  add(`✅ Fehler gelöscht – 404.html hat übernommen – bereit für Vorführung`);
-  setTimeout(()=>{ location.href='/freeboote/?auftrieb=1'; }, 1500);
-}
+    if(history.length > 1){
+        history.back();
+    }else{
+        window.location.href="/";
+    }
 
-// Auto-Log beim Laden
-add(`404.html aktiv – fängt Fehler ab – bereit zum Löschen`);
+});
+
+console.log("ROOT READY");
+console.log("GRID 81 -> 729");
+console.log("ALLOC FALSE");
+
 </script>
+
 </body>
 </html>
