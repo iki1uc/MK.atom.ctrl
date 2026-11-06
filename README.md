@@ -1,67 +1,45 @@
-# BRAIN · ROOT — RUN-21-Master-Ordnung (echte Umsetzung)
+# muss.weg
 
-## Wichtig zuerst
+**Wagnisschale – ROOT zuerst – 3 → 9**
 
-Dieses Projekt nutzt echte ES-Module (`import`/`export`) zwischen den Dateien.
-Browser blockieren das Laden von Modulen über `file://` (Doppelklick auf
-`index.html`) aus Sicherheitsgründen (CORS). Du brauchst einen der beiden Wege:
+Brain ist weg. Nur noch Root + core + hdf + stage.
 
-**A) Lokal testen:**
-```bash
-cd BRAIN-PROJECT
-python3 -m http.server 8080
-# dann im Browser: http://localhost:8080
-```
-oder mit Node: `npx serve .`
+## ROOT – 3 – muss laufen
+- `index.html` – Stage – Einstieg
+- `404.html` – Fallback + recall `?node=`
+- `README.md` – das hier
 
-**B) Über dein GitHub-Repo (passt zu deinem iki1uc-Workflow):**
-Einfach in ein Repo pushen und GitHub Pages aktivieren — dann läuft es
-direkt über `https://iki1uc.github.io/<repo>/`.
+## CORE – Motor – 8 Dateien
+- `core/NC_figur.js`
+- `core/NC_kraft.js`
+- `core/NC_space.js`
+- `core/NC_time.js`
+- `core/OS_CORE.js`
+- `core/axiom.map.js`
+- `core/coord.js`
+- `core/vec.js`
 
-## Was hier real ist und was nur Namensgebung
+## HDF / MODULES – Inhalt
+- `hdf/modules/dreieck/dreieck.js`
+- `hdf/modules/respo/respo.js`
 
-- **Vec3, Clock, springForce/damp/clamp**: echte, funktionierende Mathematik.
-  Nichts davon ist Fantasie — das sind Standard-Techniken für 3D-Positionen,
-  Animationszeit und weiche Annäherung an Zielwerte.
-- **NC-Suite (Space/Time/Kraft/Figur)**: die Namen stammen aus deiner
-  Vorgabe. Technisch sind es vier kleine, ehrliche Utility-Module — keine
-  eigenständige "Physik-Engine". Das ist wichtig zu wissen, falls du das
-  irgendwo als "physikalischen Unterbau" im engeren technischen Sinn
-  präsentieren willst.
-- **HDF-ROM-System**: ein echter Key-Value-Speicher pro Buchstabe
-  (`localStorage`-basiert), kein Datenbank-System. Für ein Demo/Prototyp
-  völlig ausreichend, für echte Mehrbenutzer-Daten bräuchtest du ein
-  Backend.
-- **RESPO-Mesh**: die 81 Slots berechnen tatsächlich einen Score aus
-  echter Abweichung, keine Zufallszahlen-Show.
-- **Dreieck-Screens**: echte 120°-Symmetrie über CSS-3D-Transforms.
-- **Stage-Router**: ein echter, funktionierender Hash-Router
-  (Browser-Zurück-Taste funktioniert).
+## STAGE – Bühne
+- `stage/index.html` – Master Kopie
+- `stage/router.js`
+- `stage/resolver.js`
 
-## Ordnerstruktur
+## BEILÄUFER
+- `bei.lauefer.js` – läuft mit, lädt alles, checkt alles
+- `m.md` – Notizen
+- `muss.ready` – Ready Marker
 
-```
-/BRAIN-PROJECT
-├── /core
-│   ├── vec.js          (Gruppe 2: VEC-System)
-│   ├── NC_space.js      (Gruppe 1: Raumlogik)
-│   ├── NC_time.js        (Gruppe 1: Zeitlogik)
-│   ├── NC_kraft.js        (Gruppe 1: Kraftlogik)
-│   ├── NC_figur.js         (Gruppe 1: Figurlogik)
-│   ├── coord.js
-│   ├── axiom.map.js         (Gruppe 7: Module-Karte)
-│   └── OS_CORE.js            (Kernel)
-├── /hdf
-│   └── resolver.js             (Gruppe 3: HDF-ROM-System)
-├── /modules
-│   ├── /respo/respo.js           (Gruppe 4: RESPO-System)
-│   └── /dreieck/dreieck.js        (Gruppe 5: Dreieck-Screen)
-├── /stage
-│   └── router.js                    (Gruppe 6: Stage-System)
-└── index.html                         (BRAIN — verdrahtet alles)
-```
+## Start
+1. `index.html` aufmachen
+2. `bei.lauefer.js` läuft mit
+3. 404 testen – muss recall machen
 
-Die Module `boerse`, `dom`, `eos`, `evo`, `markt`, `tool48` existieren als
-Einträge in `axiom.map.js`, aber noch nicht als eigene Dateien — die Navigation
-zeigt für sie aktuell nur den Status/Label an. Sag Bescheid, welches davon
-zuerst wirklich befüllt werden soll, dann bauen wir das als echtes Modul aus.
+## Regel
+- Kein brain/ mehr
+- Kein 404.html/ Ordner mehr – nur 1 Datei
+- Keine Kopie – jede Datei nur 1x
+- Was stört → schmelzen / verdampfen
